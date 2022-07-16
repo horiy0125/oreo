@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  devise_for :users
+
+  namespace :admin do
+  end
 
   namespace :api do
     get '/health_check' => 'health_check#index'
+
+    namespace :v1 do
+      mount_devise_token_auth_for 'User', at: 'auth'
+    end
   end
 
 end
