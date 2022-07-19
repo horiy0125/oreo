@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
       get '/callback' => 'callback#index'
 
-      resources :monthly_balances
+      resources :monthly_balances, only: [:create, :update, :destroy]
+      resources :receipts, only: [:create, :update, :destroy]
+      resources :expenses, only: [:create, :update, :destroy]
     end
   end
 
