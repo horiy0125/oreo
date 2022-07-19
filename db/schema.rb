@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_16_080247) do
+ActiveRecord::Schema.define(version: 2022_07_18_175626) do
+
+  create_table "monthly_balances", force: :cascade do |t|
+    t.date "accrual_month", null: false
+    t.integer "amount", null: false
+    t.text "note"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["accrual_month"], name: "index_monthly_balances_on_accrual_month", unique: true
+    t.index ["user_id"], name: "index_monthly_balances_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
