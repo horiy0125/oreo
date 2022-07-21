@@ -83,6 +83,41 @@ class Api::V1::BalanceController < Api::V1::BaseController
         0
       end
 
+    @monthly_balance =
+      if @monthly_balance == nil
+        nil
+      else
+        {
+          id: @monthly_balance.id,
+          userId: @monthly_balance.user_id,
+          accrualMonth: @monthly_balance.accrual_month,
+          amount: @monthly_balance.amount,
+          note: @monthly_balance.note,
+          createdAt: @monthly_balance.created_at,
+          updatedAt: @monthly_balance.updated_at
+        }
+      end
+
+    @expenses = @expenses.map{ |expense| {
+      id: expense.id,
+      userId: expense.user_id,
+      accrualDate: expense.accrual_date,
+      title: expense.title,
+      amount: expense.amount,
+      createdAt: expense.created_at,
+      updatedAt: expense.updated_at
+    } }
+
+    @receipts = @receipts.map{ |receipt| {
+      id: receipt.id,
+      userId: receipt.user_id,
+      accrualDate: receipt.accrual_date,
+      title: receipt.title,
+      amount: receipt.amount,
+      createdAt: receipt.created_at,
+      updatedAt: receipt.updated_at
+    } }
+
     render json: {
       balance: amount,
       changes: changes,
