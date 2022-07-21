@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_19_043833) do
+ActiveRecord::Schema.define(version: 2022_07_21_012107) do
 
   create_table "expenses", force: :cascade do |t|
     t.date "accrual_date", null: false
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2022_07_19_043833) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["accrual_month"], name: "index_monthly_balances_on_accrual_month", unique: true
+    t.index ["user_id", "accrual_month"], name: "index_monthly_balances_on_user_id_and_accrual_month", unique: true
     t.index ["user_id"], name: "index_monthly_balances_on_user_id"
   end
 
