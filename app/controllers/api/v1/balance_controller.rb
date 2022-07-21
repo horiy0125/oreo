@@ -119,13 +119,15 @@ class Api::V1::BalanceController < Api::V1::BaseController
     } }
 
     render json: {
-      balance: amount,
-      changes: changes,
-      monthlyBalance: @monthly_balance,
-      expenses: @expenses,
-      totalExpenses: total_expenses,
-      receipts: @receipts,
-      totalReceipts: total_receipts
+      data: {
+        balance: amount,
+        changes: changes,
+        monthlyBalance: @monthly_balance,
+        expenses: @expenses,
+        totalExpenses: total_expenses,
+        receipts: @receipts,
+        totalReceipts: total_receipts
+      }
     }
   end
 

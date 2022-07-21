@@ -16,7 +16,9 @@ class Api::V1::ReceiptsController < Api::V1::BaseController
     }
 
     render json: {
-      receipt: @receipt
+      data: {
+        receipt: @receipt
+      }
     }, status: :created, location: api_v1_receipt_path(@receipt)
   end
 

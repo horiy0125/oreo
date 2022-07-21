@@ -22,12 +22,12 @@ if Rails.env.development? || Rails.env.test?
   monthly_balances = MonthlyBalance.create([
     {
       accrual_month: 1.months.ago.end_of_month,
-      amount: 60000,
+      amount: 120000,
       user_id: admin_user.id
     },
     {
       accrual_month: 2.months.ago.end_of_month,
-      amount: 50000,
+      amount: 90000,
       user_id: admin_user.id
     },
     {

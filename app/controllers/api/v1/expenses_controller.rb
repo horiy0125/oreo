@@ -16,7 +16,9 @@ class Api::V1::ExpensesController < Api::V1::BaseController
     }
 
     render json: {
-      expense: @expense
+      data: {
+        expense: @expense
+      }
     }, status: :created, location: api_v1_expense_path(@expense)
   end
 

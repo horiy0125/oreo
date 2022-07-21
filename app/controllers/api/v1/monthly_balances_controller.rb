@@ -16,7 +16,9 @@ class Api::V1::MonthlyBalancesController < Api::V1::BaseController
     }
 
     render json: {
-      monthlyBalance: @monthly_balance
+      data: {
+        monthlyBalance: @monthly_balance
+      }
     }, status: :created, location: api_v1_monthly_balance_path(@monthly_balance)
   end
 
